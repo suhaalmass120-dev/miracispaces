@@ -87,7 +87,8 @@
     function offset(slide) { return slide.offsetLeft - slides[0].offsetLeft; }
     function show(i) {
       current = i;
-      count.textContent = i + 1 + " of " + slides.length + ": " + slides[i].querySelector("h3").textContent;
+      var heading = slides[i].querySelector("h3");
+      count.textContent = i + 1 + " of " + slides.length + ": " + (slides[i].dataset.title || heading.textContent);
       prev.disabled = i === 0;
       next.disabled = i === slides.length - 1;
     }

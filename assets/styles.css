@@ -83,6 +83,10 @@ p { margin: 0; }
 .services { display: grid; grid-template-columns: 4fr 8fr; gap: clamp(32px, 6vw, 96px); margin-top: clamp(32px, 5vw, 64px); }
 .service-panels img { width: 100%; aspect-ratio: 16 / 10; object-fit: cover; }
 .service-panels p { margin-top: 20px; max-width: 58ch; color: var(--muted-on-black); }
+.layout-track { gap: 16px; padding-top: 0; }
+.layout-slide { flex: 0 0 100%; min-width: 0; margin: 0; scroll-snap-align: start; }
+.layout-controls { margin-top: 12px; padding-bottom: 0; border-bottom: 0; }
+.service-panels .plan-count { margin-top: 0; color: var(--white); }
 
 /* Process */
 .steps { list-style: none; counter-reset: step; margin: clamp(40px, 5vw, 72px) 0 0; padding: 0; display: grid; grid-template-columns: repeat(6, 1fr); border-top: 2px solid var(--amber); }

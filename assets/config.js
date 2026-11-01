@@ -5,6 +5,6 @@ window.MIRACI_SITE = {
   phone: "+91 74837 98686",
   whatsapp: "917483798686", // digits with country code, no spaces
   email: "miracispaces768@gmail.com",
-  address: "Capitanio School Road, Nanthoor / Pumpwell, Mangaluru, Karnataka 575002",
+  address: "Lotus Galaxy, Capitanio School Road, Nanthoor / Pumpwell, Mangaluru, Karnataka 575002",
   instagram: ""         // full link
 };

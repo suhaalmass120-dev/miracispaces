@@ -88,12 +88,22 @@
     if (e.target === lightbox) lightbox.close();
   });
 
-  // Enquiry form: there is no server, so it opens WhatsApp or email with the details filled in
+  // Enquiry form: there is no server, so it hands over to WhatsApp or email with the details filled in.
+  // It goes there in the same tab because browsers can block new windows without telling the page.
   var form = document.getElementById("enquiry-form");
   var status = document.getElementById("form-status");
+  var fallback = document.getElementById("form-fallback");
   function say(text, isError) {
     status.textContent = text;
     status.classList.toggle("is-error", Boolean(isError));
+    fallback.hidden = true;
+  }
+  function handOver(url, text, linkText) {
+    say(text);
+    fallback.href = url;
+    fallback.textContent = linkText;
+    fallback.hidden = false;
+    window.location.href = url;
   }
   function buildMessage(data) {
     return [
@@ -124,11 +134,9 @@
     }
     var text = buildMessage(new FormData(form));
     if (site.whatsapp) {
-      window.open("https://wa.me/" + site.whatsapp + "?text=" + encodeURIComponent(text), "_blank", "noopener");
-      say("WhatsApp is open with your details. Press send there to reach us.");
+      handOver("https://wa.me/" + site.whatsapp + "?text=" + encodeURIComponent(text), "Opening WhatsApp. Your enquiry isn't sent until you press send there.", "WhatsApp didn't open? Tap here");
     } else if (site.email) {
-      window.location.href = "mailto:" + site.email + "?subject=" + encodeURIComponent("Website enquiry") + "&body=" + encodeURIComponent(text);
-      say("Your email app is open with your details. Press send there to reach us.");
+      handOver("mailto:" + site.email + "?subject=" + encodeURIComponent("Website enquiry") + "&body=" + encodeURIComponent(text), "Opening your email app. Your enquiry isn't sent until you press send there.", "Email didn't open? Tap here");
     } else {
       say("Enquiries aren't connected yet. Add a WhatsApp number or email in assets/config.js.", true);
     }

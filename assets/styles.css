@@ -138,6 +138,7 @@ p { margin: 0; }
 .form .btn { justify-self: start; }
 .form-status { min-height: 1.6em; font-size: 1rem; }
 .form-status.is-error { color: #ff8f7a; }
+.form-fallback { justify-self: start; padding-block: 8px; color: var(--amber); font: 500 1rem/1.4 var(--display); }
 
 /* Footer */
 .site-footer { border-top: 1px solid var(--line-on-black); padding-block: 40px; font-family: var(--display); font-size: 1rem; }

@@ -79,9 +79,6 @@ p { margin: 0; }
 .tablist-stack [role="tab"] { font-size: clamp(1.75rem, 3.2vw, 2.75rem); font-weight: 300; line-height: 1.2; padding: 20px 0; border-bottom: 1px solid var(--line-on-black); color: var(--muted-on-black); }
 .tablist-stack [role="tab"][aria-selected="true"] { color: var(--white); border-bottom-color: var(--amber); box-shadow: 0 1px 0 var(--amber); }
 .tablist-stack [role="tab"]:hover { color: var(--white); }
-.tablist-row { display: flex; gap: 28px; border-bottom: 1px solid var(--line-on-black); margin-bottom: 24px; }
-.tablist-row [role="tab"] { font-size: 1.125rem; padding: 10px 0; margin-bottom: -1px; border-bottom: 2px solid transparent; color: var(--muted-on-black); }
-.tablist-row [role="tab"][aria-selected="true"] { color: var(--white); border-bottom-color: var(--amber); }
 
 .services { display: grid; grid-template-columns: 4fr 8fr; gap: clamp(32px, 6vw, 96px); margin-top: clamp(32px, 5vw, 64px); }
 .service-panels img { width: 100%; aspect-ratio: 16 / 10; object-fit: cover; }
@@ -110,12 +107,49 @@ p { margin: 0; }
 .features svg { width: 44px; height: 44px; margin-bottom: 10px; fill: none; stroke: currentColor; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
 
 /* Floor plans */
-.plans { display: grid; grid-template-columns: 4fr 8fr; gap: clamp(32px, 6vw, 96px); align-items: start; }
-.plans .note { margin-top: 20px; }
-.plan { width: 100%; height: auto; }
-.plan rect { fill: none; stroke: var(--white); stroke-width: 2; }
-.plan rect.out { stroke: var(--amber); stroke-dasharray: 2 7; stroke-linecap: round; }
-.plan text { fill: var(--white); font: 400 17px var(--display); text-anchor: middle; }
+.plan-slider { margin-top: clamp(28px, 4vw, 48px); }
+.plan-controls { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px 24px; padding-bottom: 14px; border-bottom: 2px solid var(--amber); }
+.plan-count { font: 400 1.125rem/1.3 var(--display); }
+.plan-controls .btn:disabled { opacity: .35; cursor: default; pointer-events: none; }
+.plan-track { display: flex; gap: 24px; overflow-x: auto; scroll-snap-type: x mandatory; padding-top: clamp(20px, 3vw, 32px); scrollbar-width: none; }
+.plan-track::-webkit-scrollbar { display: none; }
+.plan-slide { flex: 0 0 100%; min-width: 0; scroll-snap-align: start; }
+.plan-head { display: grid; grid-template-columns: 3fr 2fr; gap: 16px clamp(24px, 5vw, 72px); align-items: start; margin-bottom: 20px; }
+.plan-head h3 { font-weight: 300; font-size: clamp(1.625rem, 2.6vw, 2.25rem); line-height: 1.15; }
+.plan-head p { margin-top: 8px; max-width: 54ch; color: var(--muted-on-black); }
+.plan-facts { display: grid; grid-template-columns: 1fr 1fr; gap: 12px 24px; margin: 0; font-family: var(--display); }
+.plan-facts dt { font-size: .95rem; color: var(--muted-on-black); }
+.plan-facts dd { margin: 2px 0 0; font-size: 1.0625rem; line-height: 1.35; }
+.plan-floors { display: grid; grid-template-columns: repeat(var(--floors), minmax(0, 480px)); justify-content: center; gap: clamp(12px, 2vw, 24px); padding: clamp(12px, 2vw, 24px); background: var(--white); }
+.plan-floor { margin: 0; min-width: 0; }
+.plan-floor figcaption { margin-top: 8px; text-align: center; color: var(--black); font: 500 1.0625rem/1.3 var(--display); }
+.plan-svg { width: 100%; height: auto; }
+.plan-svg .garden { fill: #dde9cf; }
+.plan-svg .road { fill: #d6d4cf; }
+.plan-svg .plot-faint { fill: #f6f5f2; }
+.plan-svg .plot-line { fill: none; stroke: var(--amber-deep); stroke-width: 2; stroke-dasharray: 8 6; }
+.plan-svg .k-tile { fill: #f7f3ec; }
+.plan-svg .k-wood { fill: #ecdcc4; }
+.plan-svg .k-wet { fill: #d5e7ea; }
+.plan-svg .k-out { fill: #e6d3b3; }
+.plan-svg .k-court { fill: #bcd8a7; }
+.plan-svg .k-void { fill: #fff; }
+.plan-svg .k-stair { fill: #eeebe5; }
+.plan-svg .k-park { fill: #e4e2dd; }
+.plan-svg .furn rect, .plan-svg .furn circle { fill: rgba(255,255,255,.6); stroke: #7d766b; stroke-width: 1.4; }
+.plan-svg .furn .car rect { fill: #cfcdc8; stroke: #55514b; }
+.plan-svg .treads line { stroke: #8a8378; stroke-width: 1.2; }
+.plan-svg .wall { fill: none; stroke: #111; stroke-width: 4; }
+.plan-svg .light, .plan-svg .edge { fill: none; stroke: #8a8378; stroke-width: 1.5; }
+.plan-svg .outer { fill: none; stroke: #111; stroke-width: 8; }
+.plan-svg .win { stroke: #3f8ea3; stroke-width: 6; }
+.plan-svg .gap { stroke: #f7f3ec; stroke-width: 9; }
+.plan-svg .door { fill: none; stroke: #111; stroke-width: 1.5; }
+.plan-svg text { text-anchor: middle; font-family: var(--display); fill: #111; }
+.plan-svg .room { font-size: 17px; font-weight: 500; }
+.plan-svg .dim { font-size: 13px; fill: #57534d; }
+.plan-svg .site { font-size: 15px; fill: #55514b; }
+.plan-note { margin-top: 20px; color: var(--muted-on-black); max-width: 70ch; }
 
 /* Location */
 .location { display: grid; grid-template-columns: 5fr 7fr; gap: clamp(32px, 6vw, 96px); align-items: stretch; }
@@ -167,7 +201,8 @@ p { margin: 0; }
   .site-nav { display: none; position: absolute; top: 100%; left: 0; right: 0; flex-direction: column; align-items: flex-start; gap: 6px; padding: 8px var(--gutter) 24px; background: var(--black); font-size: 1.25rem; }
   .site-header.is-open .site-nav { display: flex; }
   .site-nav .btn { margin-top: 10px; }
-  .about, .services, .plans, .location, .enquire, .feature-groups { grid-template-columns: 1fr; }
+  .plan-head { grid-template-columns: 1fr; }
+  .about, .services, .location, .enquire, .feature-groups { grid-template-columns: 1fr; }
   .steps { grid-template-columns: 1fr; border-top: 0; border-left: 2px solid var(--amber); }
   .steps li { padding: 0 0 28px 20px; }
   .steps li:last-child { padding-bottom: 0; }
@@ -178,7 +213,10 @@ p { margin: 0; }
   .hero { align-items: flex-end; }
   .hero-img { object-position: 76% 50%; }
   .hero-copy { width: 100%; }
-  .plan text { font-size: 26px; }
+  .plan-floors { grid-template-columns: minmax(0, 1fr); }
+  .plan-svg .room { font-size: 20px; }
+  .plan-svg .dim { display: none; }
+  .plan-svg .site { font-size: 18px; }
   .hero::after { background: linear-gradient(0deg, rgba(0,0,0,.86) 0%, rgba(0,0,0,.6) 42%, rgba(0,0,0,0) 72%); }
   .hero-copy { padding-bottom: 40px; }
   .hero-copy > p { font-size: 1.125rem; }

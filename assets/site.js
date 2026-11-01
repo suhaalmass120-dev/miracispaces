@@ -75,6 +75,35 @@
   document.querySelector("[data-rail-prev]").addEventListener("click", function () { moveRail(-1); });
   document.querySelector("[data-rail-next]").addEventListener("click", function () { moveRail(1); });
 
+  // Floor plan slider
+  document.querySelectorAll("[data-slider]").forEach(function (slider) {
+    var track = slider.querySelector("[data-slider-track]");
+    var slides = Array.from(track.children);
+    var count = slider.querySelector("[data-slider-count]");
+    var prev = slider.querySelector("[data-slider-prev]");
+    var next = slider.querySelector("[data-slider-next]");
+    var smooth = !window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    var current = 0;
+    function offset(slide) { return slide.offsetLeft - slides[0].offsetLeft; }
+    function show(i) {
+      current = i;
+      count.textContent = i + 1 + " of " + slides.length + ": " + slides[i].querySelector("h3").textContent;
+      prev.disabled = i === 0;
+      next.disabled = i === slides.length - 1;
+    }
+    function go(i) { track.scrollTo({ left: offset(slides[i]), behavior: smooth ? "smooth" : "auto" }); }
+    prev.addEventListener("click", function () { go(Math.max(current - 1, 0)); });
+    next.addEventListener("click", function () { go(Math.min(current + 1, slides.length - 1)); });
+    track.addEventListener("scroll", function () {
+      var nearest = 0;
+      slides.forEach(function (slide, i) {
+        if (Math.abs(offset(slide) - track.scrollLeft) < Math.abs(offset(slides[nearest]) - track.scrollLeft)) nearest = i;
+      });
+      if (nearest !== current) show(nearest);
+    }, { passive: true });
+    show(0);
+  });
+
   var lightbox = document.getElementById("lightbox");
   var lightboxImg = lightbox.querySelector("img");
   document.querySelectorAll("[data-lightbox]").forEach(function (btn) {

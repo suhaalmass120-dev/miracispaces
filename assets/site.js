@@ -9,7 +9,7 @@
   });
 
   var linkBuilders = {
-    tel: function (el) { return site.phone && "tel:" + site.phone.replace(/[^+\d]/g, ""); },
+    tel: function (el) { var number = site[el.dataset.fill]; return number && "tel:" + number.replace(/[^+\d]/g, ""); },
     mailto: function (el) { return site.email && "mailto:" + site.email; },
     wa: function (el) { return site.whatsapp && "https://wa.me/" + site.whatsapp; },
     maps: function (el) { return site.address && "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(site.address); },

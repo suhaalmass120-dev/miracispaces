@@ -27,6 +27,22 @@
     document.getElementById("office-map").src = "https://www.google.com/maps?q=" + encodeURIComponent(site.address) + "&output=embed";
   }
 
+  // Hero video: a still image for people who prefer less motion, a pause button for everyone else
+  var heroVideo = document.querySelector(".hero-video");
+  var pause = document.querySelector("[data-hero-pause]");
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    heroVideo.pause();
+    heroVideo.removeAttribute("autoplay");
+  }
+  heroVideo.addEventListener("error", function () { document.querySelector(".hero").classList.add("no-video"); }, true);
+  pause.addEventListener("click", function () {
+    var paused = !heroVideo.paused;
+    if (paused) heroVideo.pause();
+    else heroVideo.play();
+    pause.setAttribute("aria-pressed", String(paused));
+    pause.textContent = paused ? "Play video" : "Pause video";
+  });
+
   // Header
   var header = document.querySelector(".site-header");
   var toggle = document.querySelector(".nav-toggle");

@@ -218,6 +218,12 @@ p { margin: 0; }
 @keyframes intro-lift { 0% { clip-path: inset(0 0 0 0); } 99% { clip-path: inset(0 0 100% 0); } 100% { clip-path: inset(0 0 100% 0); visibility: hidden; } }
 @keyframes rise { from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: none; } }
 @keyframes fade-in { from { opacity: 0; } to { opacity: 1; } }
+/* Devices set to reduce motion get a calm version: the logo appears, then the screen fades */
+.intro-calm .intro-mark path { stroke-dashoffset: 0; animation: none; }
+.intro-calm .intro-name { opacity: 1; animation: none; }
+.intro-calm .intro-screen { animation: intro-fade .6s ease 1.1s forwards; }
+.intro-calm .hero-copy > *, .intro-calm .site-header { animation: none; }
+@keyframes intro-fade { to { opacity: 0; visibility: hidden; } }
 .hero-kicker { margin-bottom: 18px; font: 500 1rem/1.3 var(--display); color: var(--gold); }
 .hero-img { transform: scale(1.04); will-change: transform; }
 

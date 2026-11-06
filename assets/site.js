@@ -34,9 +34,24 @@
     window.setTimeout(function () { document.documentElement.classList.remove("intro"); }, 3800);
   }
 
+  // Hero image drifts slightly slower than the page as you scroll
+  var heroImg = document.querySelector(".hero-img");
+  if (!reducedMotion && heroImg) {
+    var ticking = false;
+    window.addEventListener("scroll", function () {
+      if (ticking) return;
+      ticking = true;
+      window.requestAnimationFrame(function () {
+        var y = Math.min(window.scrollY, window.innerHeight);
+        heroImg.style.transform = "translate3d(0, " + (y * 0.18).toFixed(1) + "px, 0) scale(1.04)";
+        ticking = false;
+      });
+    }, { passive: true });
+  }
+
   // Content eases in as it scrolls into view
   if (!reducedMotion && "IntersectionObserver" in window) {
-    var revealGroups = [".section > .wrap > h2", ".lede", ".prose", ".about-img", ".steps li", ".why li", ".rail figure", ".features li", ".feature-groups h3", ".plan-slider", ".location .landmarks li", ".map", ".emi-card", ".form", ".contact li"];
+    var revealGroups = [".section > .wrap > h2", ".lede", ".prose", ".philosophy-lead", ".principles li", ".kicker", ".about-img", ".steps li", ".why li", ".rail figure", ".features li", ".feature-groups h3", ".plan-slider", ".location .landmarks li", ".map", ".emi-card", ".form", ".contact li"];
     var revealObserver = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {
         if (!entry.isIntersecting) return;
@@ -184,6 +199,7 @@
   var fieldErrors = {
     name: "Enter your name.",
     phone: "Enter a phone number with at least 10 digits.",
+    email: "Enter a valid email address, or leave it blank.",
     date: "Choose a date from today onwards."
   };
   var fallback = document.getElementById("form-fallback");
@@ -204,7 +220,9 @@
       "New enquiry from the Miraci Spaces website",
       "Name: " + data.get("name"),
       "Phone: " + data.get("phone"),
+      data.get("email") && "Email: " + data.get("email"),
       "Looking for: " + data.get("interest"),
+      data.get("project") && data.get("project") !== "Not sure yet" && "Design or project: " + data.get("project"),
       "Meeting: " + data.get("meeting"),
       data.get("date") && "Preferred date: " + new Date(data.get("date") + "T00:00").toLocaleDateString("en-IN", { weekday: "short", day: "numeric", month: "short", year: "numeric" }),
       data.get("time") && "Preferred time: " + data.get("time"),

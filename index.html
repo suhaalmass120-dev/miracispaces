@@ -17,7 +17,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/styles.css?v=8">
+<link rel="stylesheet" href="assets/styles.css?v=9">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -63,11 +63,11 @@
   <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
   <nav class="site-nav" id="site-nav" aria-label="Main">
     <a href="#top">Home</a>
-    <a href="#about">About Us</a>
+    <a href="#about">About</a>
     <a href="#services">Services</a>
-    <a href="#designs">Designs</a>
-    <a href="#plans">Floor plans</a>
-    <a href="#location">Contact Us</a>
+    <a href="#designs">Projects</a>
+    <a href="#plans">Floor Plans</a>
+    <a href="#location">Contact</a>
     <a class="btn btn-gold" href="#enquire">Enquire Now</a>
   </nav>
 </header>
@@ -81,13 +81,14 @@
     </picture>
     <div class="hero-copy">
       <p class="hero-kicker">Miraci Spaces, Mangaluru</p>
-      <h1>Building Dreams. Creating Landmarks.</h1>
-      <p>Homes and gated layouts designed and built by one team, from the first sketch to handover, across Dakshina Kannada.</p>
+      <h1>Crafting Spaces. Creating Legacies.</h1>
+      <p>Thoughtfully designed spaces, expertly built for the way you live.</p>
       <div class="actions">
-        <a class="btn btn-gold" href="#designs">Explore our designs</a>
-        <a class="btn btn-line" href="#enquire">Contact us</a>
+        <a class="btn btn-gold" href="#designs">Explore Our Projects</a>
+        <a class="btn btn-line" href="#enquire">Get In Touch</a>
       </div>
     </div>
+    <a class="scroll-cue" href="#about" aria-label="Scroll to the next section"><span>Scroll</span></a>
   </section>
 
   <section class="section light" id="about">
@@ -101,6 +102,18 @@
     <img class="about-img" src="assets/img/view-pool.jpg" width="828" height="462" loading="lazy" alt="Rear of the villa at dusk, with a swimming pool, timber deck and sun loungers.">
   </section>
 
+  <section class="section sand" id="philosophy">
+    <div class="wrap philosophy">
+      <h2>Our design philosophy</h2>
+      <p class="philosophy-lead">A home should feel calm on the hottest afternoon and dry through the heaviest monsoon. We design from the climate and the way your family lives, then build it with the same care we put into the drawings.</p>
+      <ul class="principles">
+        <li><h3>Climate first</h3><p>Orientation, overhangs and cross-ventilation do the work before any machine does.</p></li>
+        <li><h3>Honest materials</h3><p>Stone, timber and lime-washed surfaces chosen to weather well and age gracefully.</p></li>
+        <li><h3>Light and openness</h3><p>Courtyards, tall glazing and connected rooms that bring daylight deep into the home.</p></li>
+      </ul>
+    </div>
+  </section>
+
   <section class="section dark" id="services">
     <div class="wrap">
       <h2>What we do</h2>
@@ -108,21 +121,27 @@
         <div class="tablist tablist-stack" role="tablist" aria-label="Services">
           <button role="tab" id="tab-arch" aria-controls="panel-arch" aria-selected="true">Architecture</button>
           <button role="tab" id="tab-cons" aria-controls="panel-cons" aria-selected="false" tabindex="-1">Construction</button>
-          <button role="tab" id="tab-int" aria-controls="panel-int" aria-selected="false" tabindex="-1">Interiors</button>
-          <button role="tab" id="tab-lay" aria-controls="panel-lay" aria-selected="false" tabindex="-1">Planning and development</button>
+          <button role="tab" id="tab-int" aria-controls="panel-int" aria-selected="false" tabindex="-1">Interior Design</button>
+          <button role="tab" id="tab-lay" aria-controls="panel-lay" aria-selected="false" tabindex="-1">Planning &amp; Development</button>
         </div>
         <div class="service-panels">
           <div role="tabpanel" id="panel-arch" aria-labelledby="tab-arch">
             <img src="assets/img/service-architecture.jpg" width="1200" height="669" loading="lazy" alt="Villa roofline with deep overhangs and a line of warm cove lighting.">
-            <p>Site studies, planning, elevations and the drawings needed for approvals, shaped around how your family lives and how your plot sits.</p>
+            <h3 class="service-title">Modern and climate-conscious architectural design.</h3>
+            <p>Homes shaped around how your family lives, how your plot sits and how the coast behaves through the year.</p>
+            <ul class="service-points"><li>Site study and design brief</li><li>Concept plans and 3D views</li><li>Working drawings and approval drawings</li></ul>
           </div>
           <div role="tabpanel" id="panel-cons" aria-labelledby="tab-cons" hidden>
             <img src="assets/img/service-construction.jpg" width="800" height="897" loading="lazy" alt="Close view of the villa's stone cladding beside vertical timber panels.">
+            <h3 class="service-title">Professional construction and project management.</h3>
             <p>Structure, stonework, glazing and finishes managed by the people who drew them, with one point of contact until handover.</p>
+            <ul class="service-points"><li>Structure, masonry and finishes</li><li>Site supervision and quality checks</li><li>Schedules and regular progress updates</li></ul>
           </div>
           <div role="tabpanel" id="panel-int" aria-labelledby="tab-int" hidden>
             <img src="assets/img/service-interiors.jpg" width="900" height="820" loading="lazy" alt="Living spaces glowing behind full-height glass, with curtains and timber panels.">
-            <p>Layouts, lighting, joinery and furnishing planned alongside the architecture, so the inside and outside read as one home.</p>
+            <h3 class="service-title">Premium interiors, lighting, furniture and finishes.</h3>
+            <p>Interiors planned alongside the architecture, so the inside and outside read as one home.</p>
+            <ul class="service-points"><li>Space planning and layouts</li><li>Lighting design</li><li>Joinery, furniture and material finishes</li></ul>
           </div>
           <div role="tabpanel" id="panel-lay" aria-labelledby="tab-lay" hidden>
             <div class="layout-slider" data-slider role="group" aria-roledescription="carousel" aria-label="Gated layout visualisations">
@@ -139,7 +158,9 @@
                 </div>
               </div>
             </div>
+            <h3 class="service-title">Residential layouts, land planning and property development.</h3>
             <p>Gated layouts planned and developed by one team, from dividing the land into plots to roads, street lighting, landscaping and the entrance gate.</p>
+            <ul class="service-points"><li>Land and plot layout planning</li><li>Roads, drainage and street lighting</li><li>Entrance, compound wall and landscaping</li></ul>
             <p class="note">Visualisations of concept layouts, not completed projects.</p>
           </div>
         </div>
@@ -175,6 +196,7 @@
 
   <section class="section dark" id="designs">
     <div class="wrap">
+      <p class="kicker">Projects <span class="tag">Concept design</span></p>
       <h2>A home we'd love to build</h2>
       <p class="lede">A concept villa in stone, timber and glass that opens onto water and garden, and glows from within at dusk. It shows how we think, and yours would be designed around your own plot and family.</p>
     </div>
@@ -186,7 +208,7 @@
       <figure><button type="button" data-lightbox="assets/img/view-stone.jpg"><img src="assets/img/view-stone.jpg" width="827" height="462" loading="lazy" alt="Corner of the villa showing tall stone walls washed with warm light."></button><figcaption>Stone corner, lit at night</figcaption></figure>
     </div>
     <div class="wrap rail-foot">
-      <p class="note">Images are visualisations of a concept design, not a completed home.</p>
+      <p class="note">Images are visualisations of a concept design, not a completed home. Completed and ongoing projects will be added here with real photographs.</p>
       <div class="rail-btns">
         <button class="btn btn-line" type="button" data-rail-prev>Previous</button>
         <button class="btn btn-line" type="button" data-rail-next>Next</button>
@@ -327,8 +349,8 @@
     <div class="wrap location">
       <div>
         <h2>Based in Mangaluru, building across Dakshina Kannada</h2>
-        <p class="lede">Our office: <a data-link="maps" data-fill="address" href="#location" target="_blank" rel="noopener">Add office address</a></p>
-        <div class="actions"><a class="btn btn-line" data-link="maps" href="#location" target="_blank" rel="noopener">Get directions on Google Maps</a></div>
+        <p class="lede">Our office: <a data-link="maps" data-fill="address" href="https://www.google.com/maps/search/?api=1&amp;query=Lotus%20Galaxy%2C%20Capitanio%20School%20Road%2C%20Nanthoor%20%2F%20Pumpwell%2C%20Mangaluru%2C%20Karnataka%20575002" target="_blank" rel="noopener">Lotus Galaxy, Capitanio School Road, Nanthoor / Pumpwell, Mangaluru, Karnataka 575002</a></p>
+        <div class="actions"><a class="btn btn-line" data-link="maps" href="https://www.google.com/maps/search/?api=1&amp;query=Lotus%20Galaxy%2C%20Capitanio%20School%20Road%2C%20Nanthoor%20%2F%20Pumpwell%2C%20Mangaluru%2C%20Karnataka%20575002" target="_blank" rel="noopener">Get directions on Google Maps</a></div>
         <h3>Around the city</h3>
         <ul class="landmarks">
           <li>Mangaluru International Airport, Bajpe</li>
@@ -381,16 +403,22 @@
       <div>
         <h2>Tell us about the home you have in mind.</h2>
         <p class="lede">Share a few details and we'll get back to you to talk it through.</p>
+        <div class="actions quick">
+          <a class="btn btn-gold" href="tel:+917483798686">Call us</a>
+          <a class="btn btn-line" data-link="wa" data-needs="whatsapp" href="https://wa.me/917483798686" target="_blank" rel="noopener">WhatsApp</a>
+          <a class="btn btn-line" data-link="maps" href="https://www.google.com/maps/search/?api=1&amp;query=Lotus%20Galaxy%2C%20Capitanio%20School%20Road%2C%20Nanthoor%20%2F%20Pumpwell%2C%20Mangaluru%2C%20Karnataka%20575002" target="_blank" rel="noopener">Get directions</a>
+        </div>
         <ul class="contact">
-          <li><a data-link="tel" data-fill="phone" href="#enquire">Add phone number</a></li>
-          <li><a data-link="tel" data-fill="phone2" href="#enquire">Add second phone number</a></li>
-          <li><a data-link="mailto" data-fill="email" href="#enquire">Add email address</a></li>
-          <li><a data-link="maps" data-fill="address" href="#location" target="_blank" rel="noopener">Add office address</a></li>
+          <li><a data-link="tel" data-fill="phone" href="tel:+917483798686">+91 74837 98686</a></li>
+          <li><a data-link="tel" data-fill="phone2" href="tel:+918660573626">+91 86605 73626</a></li>
+          <li><a data-link="mailto" data-fill="email" href="mailto:miracispaces768@gmail.com">miracispaces768@gmail.com</a></li>
+          <li><a data-link="maps" data-fill="address" href="https://www.google.com/maps/search/?api=1&amp;query=Lotus%20Galaxy%2C%20Capitanio%20School%20Road%2C%20Nanthoor%20%2F%20Pumpwell%2C%20Mangaluru%2C%20Karnataka%20575002" target="_blank" rel="noopener">Lotus Galaxy, Capitanio School Road, Nanthoor / Pumpwell, Mangaluru, Karnataka 575002</a></li>
         </ul>
       </div>
       <form class="form" id="enquiry-form" novalidate>
         <label>Your name<input name="name" autocomplete="name" required></label>
         <label>Phone number<input name="phone" type="tel" autocomplete="tel" inputmode="tel" required pattern="[0-9+ \-]{10,16}"></label>
+        <label>Email (optional)<input name="email" type="email" autocomplete="email" inputmode="email"></label>
         <label>What are you looking for?
           <select name="interest">
             <option>Design and build a new home</option>
@@ -398,6 +426,15 @@
             <option>Construction only</option>
             <option>Interiors</option>
             <option>Planning and development of a gated layout</option>
+          </select>
+        </label>
+        <label>Design or project of interest
+          <select name="project">
+            <option>Not sure yet</option>
+            <option>3 BHK villa (concept design)</option>
+            <option>4 BHK courtyard villa (concept design)</option>
+            <option>5 BHK family villa (concept design)</option>
+            <option>A gated layout</option>
           </select>
         </label>
         <fieldset class="meet">
@@ -440,13 +477,13 @@
       <a href="#designs">Designs</a>
       <a href="#emi">EMI calculator</a>
       <a href="#enquire">Enquire</a>
-      <a data-link="url" data-needs="instagram" href="#" target="_blank" rel="noopener">Instagram</a>
+      <a data-link="url" data-needs="instagram" href="https://www.instagram.com/miraci_spaces/" target="_blank" rel="noopener">Instagram</a>
     </nav>
     <p>&copy; 2026 Miraci Spaces. Mangaluru, Dakshina Kannada.</p>
   </div>
 </footer>
 
-<a class="wa-float btn btn-gold" data-link="wa" data-needs="whatsapp" href="#" target="_blank" rel="noopener">WhatsApp us</a>
+<a class="wa-float btn btn-gold" data-link="wa" data-needs="whatsapp" href="https://wa.me/917483798686" target="_blank" rel="noopener">WhatsApp us</a>
 
 <dialog class="lightbox" id="lightbox" aria-label="Enlarged image">
   <form method="dialog"><button class="btn btn-line">Close</button></form>
@@ -454,6 +491,6 @@
 </dialog>
 
 <script src="assets/config.js?v=4"></script>
-<script src="assets/site.js?v=9"></script>
+<script src="assets/site.js?v=10"></script>
 </body>
 </html>

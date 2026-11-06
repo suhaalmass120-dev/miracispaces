@@ -51,7 +51,7 @@
 
   // Content eases in as it scrolls into view
   if (!reducedMotion && "IntersectionObserver" in window) {
-    var revealGroups = [".section > .wrap > h2", ".lede", ".prose", ".philosophy-lead", ".principles li", ".kicker", ".about-img", ".steps li", ".why li", ".rail figure", ".features li", ".feature-groups h3", ".plan-slider", ".location .landmarks li", ".map", ".emi-card", ".form", ".contact li"];
+    var revealGroups = [".section > .wrap > h2", ".lede", ".prose", ".philosophy-lead", ".principles li", ".kicker", ".steps li", ".why li", ".features li", ".feature-groups h3", ".plan-slider", ".location .landmarks li", ".map", ".form", ".contact li"];
     var revealObserver = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {
         if (!entry.isIntersecting) return;
@@ -59,6 +59,10 @@
         revealObserver.unobserve(entry.target);
       });
     }, { rootMargin: "0px 0px -8% 0px" });
+    document.querySelectorAll(".about-img, .service-panels img, .rail figure img, .emi-card").forEach(function (el) {
+      el.setAttribute("data-reveal", "clip");
+      revealObserver.observe(el);
+    });
     revealGroups.forEach(function (selector) {
       document.querySelectorAll(selector).forEach(function (el, i) {
         if (el.closest(".hero")) return;

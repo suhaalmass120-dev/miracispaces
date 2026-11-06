@@ -27,6 +27,63 @@
     document.getElementById("office-map").src = "https://www.google.com/maps?q=" + encodeURIComponent(site.address) + "&output=embed";
   }
 
+  var reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  // Opening transition: the CSS animation hides the screen on its own; this tidies up afterwards
+  if (document.documentElement.classList.contains("intro")) {
+    window.setTimeout(function () { document.documentElement.classList.remove("intro"); }, 3800);
+  }
+
+  // Content eases in as it scrolls into view
+  if (!reducedMotion && "IntersectionObserver" in window) {
+    var revealGroups = [".section > .wrap > h2", ".lede", ".prose", ".about-img", ".steps li", ".why li", ".rail figure", ".features li", ".feature-groups h3", ".plan-slider", ".location .landmarks li", ".map", ".emi-card", ".form", ".contact li"];
+    var revealObserver = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add("is-in");
+        revealObserver.unobserve(entry.target);
+      });
+    }, { rootMargin: "0px 0px -8% 0px" });
+    revealGroups.forEach(function (selector) {
+      document.querySelectorAll(selector).forEach(function (el, i) {
+        if (el.closest(".hero")) return;
+        el.setAttribute("data-reveal", "");
+        el.style.setProperty("--d", Math.min(i % 6, 5) * 0.08 + "s");
+        revealObserver.observe(el);
+      });
+    });
+    document.documentElement.classList.add("reveal-on");
+  }
+
+  // EMI calculator
+  var emiForm = document.getElementById("emi-form");
+  var rupees = new Intl.NumberFormat("en-IN", { style: "currency", currency: "INR", maximumFractionDigits: 0 });
+  function updateEmi() {
+    var amount = Number(emiForm.amount.value), rate = Number(emiForm.rate.value), years = Number(emiForm.years.value);
+    var error = document.getElementById("emi-error");
+    var fields = [emiForm.amount, emiForm.rate, emiForm.years];
+    var bad = fields.filter(function (f) { return !f.value || !f.checkValidity(); });
+    fields.forEach(function (f) { f.setAttribute("aria-invalid", String(bad.indexOf(f) !== -1)); });
+    if (bad.length) {
+      error.textContent = "Enter a loan between ₹1,00,000 and ₹5,00,00,000, a rate between 1% and 20%, and a term between 1 and 30 years.";
+      return;
+    }
+    error.textContent = "";
+    var months = years * 12, monthlyRate = rate / 12 / 100;
+    var growth = Math.pow(1 + monthlyRate, months);
+    var monthly = amount * monthlyRate * growth / (growth - 1);
+    document.getElementById("emi-monthly").textContent = rupees.format(monthly);
+    document.getElementById("emi-interest").textContent = rupees.format(monthly * months - amount);
+    document.getElementById("emi-total").textContent = rupees.format(monthly * months);
+  }
+  emiForm.querySelectorAll('input[type="range"]').forEach(function (slider) {
+    var box = document.getElementById(slider.dataset.for);
+    slider.addEventListener("input", function () { box.value = slider.value; updateEmi(); });
+    box.addEventListener("input", function () { if (box.checkValidity()) slider.value = box.value; updateEmi(); });
+  });
+  emiForm.addEventListener("submit", function (e) { e.preventDefault(); });
+  updateEmi();
+
   // Header
   var header = document.querySelector(".site-header");
   var toggle = document.querySelector(".nav-toggle");
@@ -82,7 +139,7 @@
     var count = slider.querySelector("[data-slider-count]");
     var prev = slider.querySelector("[data-slider-prev]");
     var next = slider.querySelector("[data-slider-next]");
-    var smooth = !window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    var smooth = !reducedMotion;
     var current = 0;
     function offset(slide) { return slide.offsetLeft - slides[0].offsetLeft; }
     function show(i) {
@@ -122,6 +179,13 @@
   // It goes there in the same tab because browsers can block new windows without telling the page.
   var form = document.getElementById("enquiry-form");
   var status = document.getElementById("form-status");
+  var today = new Date();
+  form.elements.date.min = new Date(today.getTime() - today.getTimezoneOffset() * 60000).toISOString().slice(0, 10);
+  var fieldErrors = {
+    name: "Enter your name.",
+    phone: "Enter a phone number with at least 10 digits.",
+    date: "Choose a date from today onwards."
+  };
   var fallback = document.getElementById("form-fallback");
   function say(text, isError) {
     status.textContent = text;
@@ -141,6 +205,9 @@
       "Name: " + data.get("name"),
       "Phone: " + data.get("phone"),
       "Looking for: " + data.get("interest"),
+      "Meeting: " + data.get("meeting"),
+      data.get("date") && "Preferred date: " + new Date(data.get("date") + "T00:00").toLocaleDateString("en-IN", { weekday: "short", day: "numeric", month: "short", year: "numeric" }),
+      data.get("time") && "Preferred time: " + data.get("time"),
       data.get("area") && "Plot or area: " + data.get("area"),
       data.get("message") && "Message: " + data.get("message")
     ].filter(Boolean).join("\n");
@@ -158,7 +225,7 @@
       }
     });
     if (invalid) {
-      say(invalid.name === "phone" ? "Enter a phone number with at least 10 digits." : "Enter your name.", true);
+      say(fieldErrors[invalid.name] || "Check the highlighted field.", true);
       invalid.focus();
       return;
     }

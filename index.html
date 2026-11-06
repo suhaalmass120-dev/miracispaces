@@ -3,10 +3,11 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Miraci Spaces | Design and build homes in Mangaluru</title>
-<meta name="description" content="Miraci Spaces is a design and build company in Mangaluru, Dakshina Kannada. Architecture, construction and interiors from one team.">
-<meta property="og:title" content="Miraci Spaces | Design and build homes in Mangaluru">
-<meta property="og:description" content="Architecture, construction and interiors from one team in Mangaluru, Dakshina Kannada.">
+<title>Miraci Spaces | Builders and developers in Mangaluru</title>
+<meta name="description" content="Miraci Spaces designs and builds homes and gated layouts in Mangaluru, Dakshina Kannada, with architecture, construction and interiors from one team.">
+<meta property="og:title" content="Miraci Spaces | Building Dreams. Creating Landmarks.">
+<meta property="og:description" content="Homes and gated layouts designed and built by one team in Mangaluru, Dakshina Kannada.">
+<script>try{if(!matchMedia("(prefers-reduced-motion: reduce)").matches&&!sessionStorage.getItem("miraci-intro")){document.documentElement.classList.add("intro");sessionStorage.setItem("miraci-intro","1")}}catch(e){}</script>
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://miracispaces.in/">
 <meta property="og:image" content="https://miracispaces.in/assets/img/hero.jpg">
@@ -16,7 +17,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/styles.css?v=6">
+<link rel="stylesheet" href="assets/styles.css?v=8">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -41,6 +42,11 @@
 </head>
 <body>
 
+<div class="intro-screen" aria-hidden="true">
+  <svg class="intro-mark" viewBox="238 106 472 367"><path pathLength="1" d="M259 452V131L525 452M380 127 537 310 688 141V452"/></svg>
+  <span class="intro-name">MIRACI SPACES</span>
+</div>
+
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <symbol id="monogram" viewBox="238 106 472 367">
     <path d="M259 452V131L525 452M380 127 537 310 688 141V452" fill="none" stroke="currentColor" stroke-width="34" stroke-linecap="round" stroke-linejoin="round"/>
@@ -56,12 +62,13 @@
   </a>
   <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
   <nav class="site-nav" id="site-nav" aria-label="Main">
-    <a href="#about">About</a>
+    <a href="#top">Home</a>
+    <a href="#about">About Us</a>
     <a href="#services">Services</a>
     <a href="#designs">Designs</a>
     <a href="#plans">Floor plans</a>
-    <a href="#location">Location</a>
-    <a class="btn btn-amber" href="#enquire">Enquire</a>
+    <a href="#location">Contact Us</a>
+    <a class="btn btn-gold" href="#enquire">Enquire Now</a>
   </nav>
 </header>
 
@@ -73,11 +80,12 @@
       <img class="hero-img" src="assets/img/hero.jpg" width="1672" height="941" fetchpriority="high" alt="Two-storey stone, timber and glass villa lit from within at dusk, reflected in still water.">
     </picture>
     <div class="hero-copy">
-      <h1>Homes designed and built for the Karnataka coast.</h1>
-      <p>Architecture, construction and interiors from one team in Mangaluru.</p>
+      <p class="hero-kicker">Miraci Spaces, Mangaluru</p>
+      <h1>Building Dreams. Creating Landmarks.</h1>
+      <p>Homes and gated layouts designed and built by one team, from the first sketch to handover, across Dakshina Kannada.</p>
       <div class="actions">
-        <a class="btn btn-amber" href="#enquire">Enquire about a home</a>
-        <a class="btn btn-line" href="#designs">See our designs</a>
+        <a class="btn btn-gold" href="#designs">Explore our designs</a>
+        <a class="btn btn-line" href="#enquire">Contact us</a>
       </div>
     </div>
   </section>
@@ -150,6 +158,18 @@
         <li><h3>Interiors</h3><p>Joinery, lighting and furnishing brought in as one plan.</p></li>
         <li><h3>Handover</h3><p>A final walk through together, and the keys are yours.</p></li>
       </ol>
+    </div>
+  </section>
+
+  <section class="section sand" id="why">
+    <div class="wrap">
+      <h2>Why choose Miraci Spaces</h2>
+      <ul class="why">
+        <li><h3>One team, start to finish</h3><p>Architecture, construction and interiors stay with the same people, so nothing gets lost between designer and builder.</p></li>
+        <li><h3>Designed for the coast</h3><p>Deep overhangs, materials chosen for monsoon and salt air, and rooms planned for breeze and light.</p></li>
+        <li><h3>Approvals handled</h3><p>We prepare the drawings and paperwork your home or layout needs for the required permissions.</p></li>
+        <li><h3>Local and easy to reach</h3><p>Our office is at Lotus Galaxy, Pumpwell. Call, WhatsApp or visit us to talk through your plans.</p></li>
+      </ul>
     </div>
   </section>
 
@@ -323,6 +343,39 @@
     </div>
   </section>
 
+  <section class="section sand" id="emi">
+    <div class="wrap emi">
+      <div>
+        <h2>Plan your budget</h2>
+        <p class="lede">Estimate the monthly instalment on a home loan. Change any figure and the result updates straight away.</p>
+        <p class="note emi-note">An estimate only. Your actual rate, fees and eligibility depend on your bank.</p>
+      </div>
+      <form class="emi-card" id="emi-form" novalidate>
+        <div class="emi-field">
+          <label for="emi-amount">Loan amount (₹)</label>
+          <input id="emi-amount" name="amount" type="number" inputmode="numeric" min="100000" max="50000000" step="50000" value="5000000">
+          <input type="range" aria-label="Loan amount" data-for="emi-amount" min="100000" max="50000000" step="50000" value="5000000">
+        </div>
+        <div class="emi-field">
+          <label for="emi-rate">Interest rate (% a year)</label>
+          <input id="emi-rate" name="rate" type="number" inputmode="decimal" min="1" max="20" step="0.05" value="8.5">
+          <input type="range" aria-label="Interest rate" data-for="emi-rate" min="1" max="20" step="0.05" value="8.5">
+        </div>
+        <div class="emi-field">
+          <label for="emi-years">Loan term (years)</label>
+          <input id="emi-years" name="years" type="number" inputmode="numeric" min="1" max="30" step="1" value="20">
+          <input type="range" aria-label="Loan term" data-for="emi-years" min="1" max="30" step="1" value="20">
+        </div>
+        <dl class="emi-result" aria-live="polite">
+          <div class="emi-main"><dt>Monthly instalment</dt><dd id="emi-monthly">–</dd></div>
+          <div><dt>Total interest</dt><dd id="emi-interest">–</dd></div>
+          <div><dt>Total payable</dt><dd id="emi-total">–</dd></div>
+        </dl>
+        <p class="emi-error" id="emi-error" role="alert"></p>
+      </form>
+    </div>
+  </section>
+
   <section class="section dark" id="enquire">
     <div class="wrap enquire">
       <div>
@@ -344,11 +397,29 @@
             <option>Architecture only</option>
             <option>Construction only</option>
             <option>Interiors</option>
+            <option>Planning and development of a gated layout</option>
           </select>
         </label>
+        <fieldset class="meet">
+          <legend>How would you like to meet?</legend>
+          <label class="choice"><input type="radio" name="meeting" value="Call me back" checked> Call me back</label>
+          <label class="choice"><input type="radio" name="meeting" value="Consultation at your office"> Consultation at your office</label>
+          <label class="choice"><input type="radio" name="meeting" value="Site visit to my plot"> Site visit to my plot</label>
+        </fieldset>
+        <div class="form-row">
+          <label>Preferred date (optional)<input name="date" type="date"></label>
+          <label>Preferred time (optional)
+            <select name="time">
+              <option value="">Any time</option>
+              <option>Morning, 9 am to 12 pm</option>
+              <option>Afternoon, 12 pm to 4 pm</option>
+              <option>Evening, 4 pm to 7 pm</option>
+            </select>
+          </label>
+        </div>
         <label>Plot or area (optional)<input name="area" autocomplete="off"></label>
         <label>Anything else (optional)<textarea name="message" rows="3"></textarea></label>
-        <button class="btn btn-amber" type="submit">Send enquiry</button>
+        <button class="btn btn-gold" type="submit">Send enquiry</button>
         <p class="form-status" id="form-status" role="status"></p>
         <a class="form-fallback" id="form-fallback" href="#enquire" hidden>WhatsApp didn't open? Tap here</a>
       </form>
@@ -364,9 +435,10 @@
       <span class="brand-name">MIRACI SPACES</span>
     </a>
     <nav aria-label="Footer">
-      <a href="#about">About</a>
+      <a href="#about">About Us</a>
       <a href="#services">Services</a>
       <a href="#designs">Designs</a>
+      <a href="#emi">EMI calculator</a>
       <a href="#enquire">Enquire</a>
       <a data-link="url" data-needs="instagram" href="#" target="_blank" rel="noopener">Instagram</a>
     </nav>
@@ -374,7 +446,7 @@
   </div>
 </footer>
 
-<a class="wa-float btn btn-amber" data-link="wa" data-needs="whatsapp" href="#" target="_blank" rel="noopener">WhatsApp us</a>
+<a class="wa-float btn btn-gold" data-link="wa" data-needs="whatsapp" href="#" target="_blank" rel="noopener">WhatsApp us</a>
 
 <dialog class="lightbox" id="lightbox" aria-label="Enlarged image">
   <form method="dialog"><button class="btn btn-line">Close</button></form>
@@ -382,6 +454,6 @@
 </dialog>
 
 <script src="assets/config.js?v=4"></script>
-<script src="assets/site.js?v=7"></script>
+<script src="assets/site.js?v=9"></script>
 </body>
 </html>
